@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="logoTitle">
+  <title id="logoTitle">شعار محلات عبق الياسمين للعطور</title>
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8BE45"/>
+      <stop offset="50%" stop-color="#C9961A"/>
+      <stop offset="100%" stop-color="#8B6914"/>
+    </linearGradient>
+  </defs>
+  <rect width="240" height="240" rx="24" fill="#3D1A08"/>
+  <rect x="6" y="6" width="228" height="228" rx="18" fill="none" stroke="url(#goldGrad)" stroke-width="2" opacity="0.7"/>
+  <!-- Decorative perfume bottle silhouette -->
+  <g transform="translate(120,128)" fill="url(#goldGrad)">
+    <rect x="-10" y="-58" width="20" height="14" rx="3"/>
+    <rect x="-4" y="-66" width="8" height="10" rx="2"/>
+    <path d="M-28 -42 C-28 -52 -16 -56 0 -56 C16 -56 28 -52 28 -42 L34 40 C34 52 22 58 0 58 C-22 58 -34 52 -34 40 Z" opacity="0.9"/>
+  </g>
+  <text x="120" y="208" text-anchor="middle" font-family="'Noto Kufi Arabic', sans-serif" font-size="22" font-weight="700" fill="#F2D878">عبق الياسمين</text>
+</svg>
