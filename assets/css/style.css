@@ -757,7 +757,92 @@ footer::after {
     padding: 5rem 0;
   }
 }
+/* ════════════════════════════════════════════════════════════════
+   FOCUS INDICATORS — لتحسين إمكانية الوصول (Accessibility)
+   ════════════════════════════════════════════════════════════════ */
 
+/* Focus outline for all interactive elements */
+a:focus-visible,
+button:focus-visible,
+.g-item:focus-visible,
+.nav-cta:focus-visible,
+.btn-primary:focus-visible,
+.btn-ghost:focus-visible,
+.social-btn:focus-visible,
+.prod-tab:focus-visible,
+.wa-float:focus-visible,
+.form-input:focus-visible,
+.form-select:focus-visible,
+.form-textarea:focus-visible,
+.form-submit:focus-visible,
+.lightbox-nav:focus-visible,
+.lightbox-close:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Special focus for the skip link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--gold);
+  color: var(--ink);
+  padding: 0.6rem 1.2rem;
+  font-family: var(--f-kufi);
+  font-size: 0.8rem;
+  z-index: 1000;
+  transition: top 0.2s;
+  text-decoration: none;
+}
+
+.skip-link:focus-visible {
+  top: 0;
+  outline: 2px solid var(--white);
+  outline-offset: 2px;
+}
+
+/* Prevent focus outline on mouse click (only show for keyboard navigation) */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Focus style for cards and gallery items */
+.prod-card:focus-visible,
+.testi-card:focus-visible,
+.feat-card:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Form focus improvement */
+.form-input:focus-visible,
+.form-select:focus-visible,
+.form-textarea:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-color: transparent;
+}
+
+/* Button focus improvement */
+.nav-cta:focus-visible {
+  outline: 2px solid var(--champagne);
+  outline-offset: 2px;
+}
+
+/* WhatsApp button focus */
+.wa-float:focus-visible .wa-float-circle {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+/* Lightbox navigation focus */
+.lightbox-nav:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+  background: rgba(0,0,0,0.3);
+}
 @media (max-width: 768px) {
   .nav-links {
     display: none;
