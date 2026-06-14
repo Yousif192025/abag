@@ -6,6 +6,28 @@
    ════════════════════════════════════════════════════════════════ */
 
 /* ───────────────────────────────
+   0. FALLBACK VARIABLES (في حالة عدم تحميل style.css)
+   ─────────────────────────────── */
+:root {
+  --gold: #B8902A;
+  --gold-lt: #E8C97A;
+  --champagne: #EDD898;
+  --ink: #1A1A1A;
+  --white: #FFFFFF;
+  --ivory: #F8F5F0;
+  --ivory2: #F3EDE2;
+  --border: rgba(184,144,42,0.3);
+  --border2: rgba(184,144,42,0.12);
+  --muted: #4F4A44;
+  --muted2: #6C5E4E;
+  --ease: cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  --f-serif: 'Amiri', serif;
+  --f-kufi: 'Noto Kufi Arabic', sans-serif;
+  --f-ibm: 'IBM Plex Sans Arabic', sans-serif;
+  --f-amiri: 'Amiri', serif;
+}
+
+/* ───────────────────────────────
    1. ABOUT — من نحن
    ─────────────────────────────── */
 .about { background: var(--white); }
@@ -107,6 +129,26 @@
   letter-spacing: 0.05em;
 }
 
+/* تحسين للجوال */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .about-img-frame::before {
+    inset: -0.8rem 0.8rem 0.8rem -0.8rem;
+  }
+  .about-img-badge {
+    bottom: -1rem;
+    left: -1rem;
+    padding: 0.8rem 1rem;
+  }
+  .about-stats {
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+}
+
 /* ───────────────────────────────
    2. PRODUCTS — تشكيلة المنتجات
    ─────────────────────────────── */
@@ -127,6 +169,7 @@
   gap: 0;
   border-bottom: 1px solid rgba(184,144,42,0.15);
   margin-bottom: 3rem;
+  flex-wrap: wrap;
 }
 .prod-tab {
   font-family: var(--f-kufi);
@@ -147,13 +190,25 @@
 }
 .prod-tab:hover:not(.active), .prod-tab:focus-visible:not(.active) { color: rgba(184,144,42,0.7); }
 
-.prod-grid {
+/* Product panels - unified style */
+.prod-panel { display: none; }
+.prod-panel.active {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.2rem;
 }
-.prod-panel { display: none; }
-.prod-panel.active { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; }
+
+/* Responsive products grid */
+@media (max-width: 992px) {
+  .prod-panel.active {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 576px) {
+  .prod-panel.active {
+    grid-template-columns: 1fr;
+  }
+}
 
 .prod-card {
   background: #141414;
@@ -289,6 +344,15 @@
 }
 .prod-custom-cta { white-space: nowrap; flex-shrink: 0; }
 
+@media (max-width: 768px) {
+  .prod-custom {
+    padding: 1.8rem;
+    flex-direction: column;
+    text-align: center;
+  }
+  .prod-custom-cta { white-space: normal; }
+}
+
 /* ───────────────────────────────
    3. FEATURES — لماذا نحن
    ─────────────────────────────── */
@@ -345,15 +409,24 @@
   line-height: 2;
 }
 
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  .feat-card {
+    padding: 1.8rem;
+  }
+}
+
 /* ───────────────────────────────
-   4. GALLERY — معرض الصور
+   4. GALLERY — معرض الصور (محسّن للتجاوب)
    ─────────────────────────────── */
 .gallery { background: var(--white); }
 
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 320px 220px;
+  grid-auto-rows: minmax(200px, auto);
   gap: 10px;
   margin-top: 3.5rem;
 }
@@ -403,14 +476,32 @@
   color: rgba(237,216,152,0.6);
   margin-top: 0.2rem;
 }
-/* Grid placements */
+
+/* Grid placements - تظل كما هي */
 .g1 { grid-column: 1 / 8; grid-row: 1 / 2; }
 .g2 { grid-column: 8 / 13; grid-row: 1 / 3; }
 .g3 { grid-column: 1 / 5; grid-row: 2 / 3; }
 .g4 { grid-column: 5 / 8; grid-row: 2 / 3; }
 
+/* تحسين معرض الصور للجوال */
+@media (max-width: 768px) {
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-auto-rows: auto;
+    gap: 15px;
+  }
+  .g1, .g2, .g3, .g4 {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .g-item {
+    aspect-ratio: 1 / 1;
+  }
+}
+
 /* ───────────────────────────────
-   5. LIGHTBOX (image viewer)
+   5. LIGHTBOX (image viewer) - محسّن للجوال
    ─────────────────────────────── */
 .lightbox {
   position: fixed;
@@ -483,8 +574,34 @@
 .lightbox-prev { right: calc(100% + 1.5rem); }
 .lightbox-next { left: calc(100% + 1.5rem); }
 
+/* تحسين Lightbox للجوال */
+@media (max-width: 768px) {
+  .lightbox-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+  .lightbox-prev { right: 0.5rem; }
+  .lightbox-next { left: 0.5rem; }
+  .lightbox-close {
+    top: 0.5rem;
+    left: 0.5rem;
+    background: rgba(0,0,0,0.5);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+  }
+  .lightbox-caption {
+    bottom: 0.5rem;
+    right: 0.5rem;
+    background: rgba(0,0,0,0.5);
+    padding: 0.2rem 0.6rem;
+    border-radius: 8px;
+    font-size: 0.6rem;
+  }
+}
+
 /* ───────────────────────────────
-   6. TESTIMONIALS — آراء العملاء
+   6. TESTIMONIALS — آراء العملاء (محسّن للجوال)
    ─────────────────────────────── */
 .testimonials { background: var(--ivory2); }
 
@@ -560,8 +677,22 @@
   margin-top: 0.1rem;
 }
 
+@media (max-width: 992px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 576px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+  .testi-card {
+    padding: 1.8rem;
+  }
+}
+
 /* ───────────────────────────────
-   7. CONTACT — اتصل بنا
+   7. CONTACT — اتصل بنا (محسّن للجوال)
    ─────────────────────────────── */
 .contact { background: var(--ink); }
 
@@ -611,6 +742,7 @@
   display: flex;
   gap: 0.7rem;
   margin-top: 0.5rem;
+  flex-wrap: wrap;
 }
 .social-btn {
   font-family: var(--f-ibm);
@@ -622,6 +754,8 @@
   border: 1px solid rgba(184,144,42,0.25);
   padding: 0.45rem 1rem;
   transition: border-color 0.25s, color 0.25s;
+  text-decoration: none;
+  display: inline-block;
 }
 .social-btn:hover, .social-btn:focus-visible { border-color: var(--gold); color: var(--champagne); }
 
@@ -680,6 +814,25 @@
 .form-submit:hover, .form-submit:focus-visible { background: var(--champagne); }
 .form-submit-icon { font-size: 0.9rem; }
 
+@media (max-width: 992px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+@media (max-width: 576px) {
+  .contact-info-item {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .contact-info-icon {
+    margin-bottom: 0.3rem;
+  }
+  .contact-social {
+    flex-wrap: wrap;
+  }
+}
+
 /* ───────────────────────────────
    8. SIMPLE CONTENT PAGES
    (used by about.html / services.html / privacy.html / contact.html)
@@ -715,5 +868,15 @@
   color: rgba(184,144,42,0.6);
   margin-bottom: 1rem;
 }
-.breadcrumb a { color: var(--gold-lt); transition: color 0.2s; }
+.breadcrumb a { color: var(--gold-lt); transition: color 0.2s; text-decoration: none; }
 .breadcrumb a:hover { color: var(--champagne); }
+
+@media (max-width: 768px) {
+  .page-hero {
+    padding: 7rem 0 3rem;
+  }
+  .page-content p,
+  .page-content li {
+    font-size: 0.9rem;
+  }
+}
