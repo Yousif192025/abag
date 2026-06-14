@@ -19,9 +19,21 @@
   <meta property="og:title" content="عبق الياسمين للعطور | فخامة العطور الفرنسية والسودانية الأصيلة">
   <meta property="og:description" content="وجهتكم الراقية في عالم الفخامة، حيث نجمع بين أصالة الروائح السودانية العريقة وجودة التركيبات العالمية الاستثنائية.">
   <meta property="og:image" content="https://yousif192025.github.io/abag/assets/images/logo.png">
+  <meta property="og:url" content="https://yousif192025.github.io/abag/">
+  <meta property="og:site_name" content="عبق الياسمين للعطور">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="عبق الياسمين للعطور | فخامة العطور الفرنسية والسودانية الأصيلة">
+  <meta name="twitter:description" content="وجهتكم الراقية في عالم الفخامة، حيث نجمع بين أصالة الروائح السودانية العريقة وجودة التركيبات العالمية الاستثنائية.">
+  <meta name="twitter:image" content="https://yousif192025.github.io/abag/assets/images/logo.png">
+
+  <!-- Robots -->
+  <meta name="robots" content="index, follow">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="assets/images/logo.png">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="apple-touch-icon" href="assets/images/logo.png">
 
   <!-- ════════════════════════════════════════
        FONTS (preconnect for performance)
@@ -30,12 +42,56 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Noto+Kufi+Arabic:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
   <!-- ════════════════════════════════════════
        STYLESHEETS (external, split by purpose)
   ════════════════════════════════════════ -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <style>
+    /* تعديلات ألوان الهيدر والفوتر لتحسين التباين مع الشعار */
+    header .nav {
+      background: #1A1A1A !important;
+      border-bottom: 1px solid #D4AF5A !important;
+    }
+    header .nav-links a {
+      color: #FFFFFF !important;
+    }
+    header .nav-links a:hover {
+      color: #E8C97A !important;
+    }
+    header .nav-cta {
+      background: #D4AF5A !important;
+      color: #1A1A1A !important;
+    }
+    header .nav-cta:hover {
+      background: #E8C97A !important;
+    }
+    footer {
+      background: #1A1A1A !important;
+    }
+    footer .footer-quote {
+      color: #E8C97A !important;
+    }
+    footer .footer-nav a {
+      color: #E8E0D5 !important;
+    }
+    footer .footer-nav a:hover {
+      color: #E8C97A !important;
+    }
+    footer .footer-copy {
+      color: #B9AE9B !important;
+    }
+    /* تحسين رؤية الـ hero background */
+    .hero-bg {
+      background-size: cover !important;
+      background-position: center !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -92,10 +148,10 @@
 <main id="main-content">
 
   <!-- ════════════════════════════════════════
-       HERO
+       HERO SECTION
   ════════════════════════════════════════ -->
   <section class="hero" aria-label="القسم الرئيسي">
-    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-bg" style="background-image: url('assets/images/pana.jpeg');" aria-hidden="true"></div>
     <div class="hero-gradient" aria-hidden="true"></div>
 
     <!-- Animated scent ribbon (decorative) -->
@@ -192,7 +248,7 @@
       <div class="about-grid">
         <figure class="about-img-frame reveal reveal-d1">
           <img
-            src="https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?auto=format&fit=crop&w=700&q=80"
+            src="assets/images/img1.jpeg"
             alt="صناعة العطور الفاخرة في عبق الياسمين"
             loading="lazy"
             width="700"
@@ -240,7 +296,7 @@
     </div>
   </section>
 
-  <!-- Ornament divider -->
+  <!-- Ornament divider dark -->
   <div class="ornament-divider dark" aria-hidden="true">
     <svg width="100%" height="48" viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="1440" height="48" fill="#1A1A1A"/>
@@ -283,40 +339,40 @@
       <div class="prod-panel active" id="panel-western" role="tabpanel" aria-labelledby="tab-western">
         <article class="prod-card reveal reveal-d1">
           <div class="prod-card-img">
-            <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=500&q=80" alt="عطور فرنسية فاخرة" loading="lazy" width="500" height="667">
+            <img src="assets/images/img2.jpeg" alt="عطور فرنسية فاخرة" loading="lazy" width="500" height="667">
             <span class="prod-badge">باريس</span>
           </div>
           <div class="prod-card-body">
             <span class="prod-cat">French Collection</span>
             <h3 class="prod-name">عطور فرنسية</h3>
             <p class="prod-desc">تركيبات فرنسية فاخرة بأرقى الخامات الأوروبية الأصيلة، أطياف راقية وساحرة تناسب جميع مناسباتكم السعيدة.</p>
-            <a href="https://wa.me/249127068886?text=أريد%20الاستفسار%20عن%20العطور%20الفرنسية" class="prod-cta" target="_blank" rel="noopener">اطلب الآن<span class="visually-hidden"> - عطور فرنسية</span></a>
+            <a href="https://wa.me/249127068886?text=أريد%20الاستفسار%20عن%20العطور%20الفرنسية" class="prod-cta" target="_blank" rel="noopener">اطلب الآن</a>
           </div>
         </article>
 
         <article class="prod-card reveal reveal-d2">
           <div class="prod-card-img">
-            <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=500&q=80" alt="عطور إسبانية أندلسية" loading="lazy" width="500" height="667">
+            <img src="assets/images/img3.jpeg" alt="عطور إسبانية أندلسية" loading="lazy" width="500" height="667">
             <span class="prod-badge">الأندلس</span>
           </div>
           <div class="prod-card-body">
             <span class="prod-cat">Spanish Collection</span>
             <h3 class="prod-name">عطور إسبانية</h3>
             <p class="prod-desc">روائح إسبانية فريدة، دافئة وغنية تعكس أسرار وفنون العطارة الأندلسية الأصيلة بلمسة عصرية.</p>
-            <a href="https://wa.me/249127068886?text=أريد%20الاستفسار%20عن%20العطور%20الإسبانية" class="prod-cta" target="_blank" rel="noopener">اطلب الآن<span class="visually-hidden"> - عطور إسبانية</span></a>
+            <a href="https://wa.me/249127068886?text=أريد%20الاستفسار%20عن%20العطور%20الإسبانية" class="prod-cta" target="_blank" rel="noopener">اطلب الآن</a>
           </div>
         </article>
 
         <article class="prod-card reveal reveal-d3">
           <div class="prod-card-img">
-            <img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=500&q=80" alt="عطور سويسرية بدقة ونقاء" loading="lazy" width="500" height="667">
+            <img src="assets/images/img5.jpeg" alt="عطور سويسرية بدقة ونقاء" loading="lazy" width="500" height="667">
             <span class="prod-badge">دقة ونقاء</span>
           </div>
           <div class="prod-card-body">
             <span class="prod-cat">Swiss Precision</span>
             <h3 class="prod-name">عطور سويسرية</h3>
             <p class="prod-desc">دقة سويسرية متناهية في التركيب، ثبات عالي ممتد، وأطياف نقية ومتوازنة بامتياز يفوق التوقعات.</p>
-            <a href="https://wa.me/249127068886?text=أريد%20الاستفسار%20عن%20العطور%20السويسرية" class="prod-cta" target="_blank" rel="noopener">اطلب الآن<span class="visually-hidden"> - عطور سويسرية</span></a>
+            <a href="https://wa.me/249127068886?text=أريد%20الاستفسار%20عن%20العطور%20السويسرية" class="prod-cta" target="_blank" rel="noopener">اطلب الآن</a>
           </div>
         </article>
 
@@ -336,40 +392,40 @@
       <div class="prod-panel" id="panel-heritage" role="tabpanel" aria-labelledby="tab-heritage" hidden>
         <article class="prod-card reveal reveal-d1">
           <div class="prod-card-img">
-            <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=500&q=80" alt="العود والبخور والعنفر" loading="lazy" width="500" height="667">
+            <img src="assets/images/img6.jpeg" alt="العود والبخور والعنفر" loading="lazy" width="500" height="667">
             <span class="prod-badge">أصالة فاخرة</span>
           </div>
           <div class="prod-card-body">
             <span class="prod-cat">Heritage — Oud</span>
             <h3 class="prod-name">العود والبخور والعنفر</h3>
             <p class="prod-desc">أجود أنواع العود الفاخر، والبخور المجهز بعناية فائقة، ليعبق المكان بتراث سوداني عميق ونكهة غنية تليق بكم.</p>
-            <a href="https://wa.me/249127068886?text=أريد%20طلب%20عود%20وبخور%20وعنفر" class="prod-cta" target="_blank" rel="noopener">اطلب الآن<span class="visually-hidden"> - العود والبخور والعنفر</span></a>
+            <a href="https://wa.me/249127068886?text=أريد%20طلب%20عود%20وبخور%20وعنفر" class="prod-cta" target="_blank" rel="noopener">اطلب الآن</a>
           </div>
         </article>
 
         <article class="prod-card reveal reveal-d2">
           <div class="prod-card-img">
-            <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=500&q=80" alt="المحلب والضفرة والمسك" loading="lazy" width="500" height="667">
+            <img src="assets/images/img7.jpeg" alt="المحلب والضفرة والمسك" loading="lazy" width="500" height="667">
             <span class="prod-badge">ريحة ناشفة</span>
           </div>
           <div class="prod-card-body">
             <span class="prod-cat">Heritage — Traditional</span>
             <h3 class="prod-name">المحلب، الضفرة والمسك</h3>
             <p class="prod-desc">محلب منقى، ضفرة ممتازة، ومسك فاخر مع تشكيلة متكاملة من الريحة الناشفة بكل أنواعها المستوحاة من عمق التراث.</p>
-            <a href="https://wa.me/249127068886?text=أريد%20استفسار%20عن%20المحلب%20والضفرة" class="prod-cta" target="_blank" rel="noopener">اطلب الآن<span class="visually-hidden"> - المحلب والضفرة والمسك</span></a>
+            <a href="https://wa.me/249127068886?text=أريد%20استفسار%20عن%20المحلب%20والضفرة" class="prod-cta" target="_blank" rel="noopener">اطلب الآن</a>
           </div>
         </article>
 
         <article class="prod-card reveal reveal-d3">
           <div class="prod-card-img">
-            <img src="https://images.unsplash.com/photo-1615655096345-61a54750068d?auto=format&fit=crop&w=500&q=80" alt="مويات الريحة والبرائح" loading="lazy" width="500" height="667">
+            <img src="assets/images/img9.jpeg" alt="مويات الريحة والبرائح" loading="lazy" width="500" height="667">
             <span class="prod-badge">نضارة لا تقاوم</span>
           </div>
           <div class="prod-card-body">
             <span class="prod-cat">Heritage — Musk</span>
             <h3 class="prod-name">مويات الريحة والبرائح</h3>
             <p class="prod-desc">مجموعة حصرية ومميزة جداً من مويات البريحة ومسحوق المسك الناعم لإضفاء لمسات نضارة وانتعاش لا تقاوم وتدوم طويلاً.</p>
-            <a href="https://wa.me/249127068886?text=استفسار%20عن%20مويات%20الريحة%20والبرائح" class="prod-cta" target="_blank" rel="noopener">اطلب الآن<span class="visually-hidden"> - مويات الريحة والبرائح</span></a>
+            <a href="https://wa.me/249127068886?text=استفسار%20عن%20مويات%20الريحة%20والبرائح" class="prod-cta" target="_blank" rel="noopener">اطلب الآن</a>
           </div>
         </article>
 
@@ -387,7 +443,7 @@
     </div>
   </section>
 
-  <!-- Ornament divider -->
+  <!-- Ornament divider ivory -->
   <div class="ornament-divider ivory" aria-hidden="true">
     <svg width="100%" height="48" viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="1440" height="48" fill="#F3EDE2"/>
@@ -440,7 +496,7 @@
     </div>
   </section>
 
-  <!-- Ornament divider -->
+  <!-- Ornament divider light -->
   <div class="ornament-divider light" aria-hidden="true">
     <svg width="100%" height="56" viewBox="0 0 1440 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="1440" height="56" fill="#FFFFFF"/>
@@ -471,9 +527,9 @@
 
       <div class="gallery-grid">
         <div class="g-item g1"
-          data-lb-src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1200&q=90"
+          data-lb-src="assets/images/imj4.jpeg"
           data-lb-cap="التشكيلة الحصرية الفاخرة">
-          <img src="https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=900&q=80" alt="زجاجات عطرية فاخرة" loading="lazy" width="900" height="600">
+          <img src="assets/images/imj4.jpeg" alt="زجاجات عطرية فاخرة" loading="lazy" width="900" height="600">
           <div class="g-item-overlay">
             <span class="g-item-label">التشكيلة الحصرية الفاخرة</span>
             <span class="g-item-sub">زجاجات كريستالية مصممة خصيصاً لتحتفظ بأرقى العطور</span>
@@ -481,9 +537,9 @@
         </div>
 
         <div class="g-item g2"
-          data-lb-src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=900&q=90"
+          data-lb-src="assets/images/imj8.jpeg"
           data-lb-cap="أجود أنواع العود والبخور">
-          <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=700&q=80" alt="أعواد البخور والعود التراثي" loading="lazy" width="700" height="467">
+          <img src="assets/images/imj8.jpeg" alt="أعواد البخور والعود التراثي" loading="lazy" width="700" height="467">
           <div class="g-item-overlay">
             <span class="g-item-label">أجود أنواع العود والبخور</span>
             <span class="g-item-sub">إعداد تقليدي وتراثي أصيل بنكهة تفوح فخامة</span>
@@ -491,9 +547,9 @@
         </div>
 
         <div class="g-item g3"
-          data-lb-src="https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?auto=format&fit=crop&w=1200&q=90"
+          data-lb-src="assets/images/img1.jpeg"
           data-lb-cap="زيوت عطرية نقية ومستوردة">
-          <img src="https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?auto=format&fit=crop&w=700&q=80" alt="تركيبات وزيوت نقية" loading="lazy" width="700" height="467">
+          <img src="assets/images/img1.jpeg" alt="تركيبات وزيوت نقية" loading="lazy" width="700" height="467">
           <div class="g-item-overlay">
             <span class="g-item-label">زيوت عطرية نقية ومستوردة</span>
             <span class="g-item-sub">مستخلصة من كبرى دور العطور في سويسرا وفرنسا</span>
@@ -501,9 +557,9 @@
         </div>
 
         <div class="g-item g4"
-          data-lb-src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=900&q=90"
+          data-lb-src="assets/images/img7.jpeg"
           data-lb-cap="روائح التراث الأصيل">
-          <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=600&q=80" alt="منتجات سودانية وريحة ناشفة" loading="lazy" width="600" height="400">
+          <img src="assets/images/img7.jpeg" alt="منتجات سودانية وريحة ناشفة" loading="lazy" width="600" height="400">
           <div class="g-item-overlay">
             <span class="g-item-label">روائح التراث الأصيل</span>
             <span class="g-item-sub">المحلب والضفرة والمسك المجهز بعناية فائقة</span>
@@ -513,7 +569,7 @@
     </div>
   </section>
 
-  <!-- Ornament divider -->
+  <!-- Ornament divider ivory -->
   <div class="ornament-divider ivory" aria-hidden="true">
     <svg width="100%" height="48" viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="1440" height="48" fill="#F3EDE2"/>
@@ -581,7 +637,7 @@
     </div>
   </section>
 
-  <!-- Ornament divider -->
+  <!-- Ornament divider dark -->
   <div class="ornament-divider dark" aria-hidden="true">
     <svg width="100%" height="48" viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="1440" height="48" fill="#0C0C0C"/>
