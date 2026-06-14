@@ -24,6 +24,7 @@ html {
   /* ── ألوان مستخرجة من الشعار الرسمي ── */
   --ink:        #0C0C0C;
   --ink2:       #1A1A1A;
+  --nav-bg:     #0A0A0A;
   --leather-dk: #3D1A08;   /* البني الداكن جداً — خلفية الشعار */
   --leather-md: #5C2A0E;   /* البني المتوسط — جسم الشعار */
   --leather-lt: #7A3C1A;   /* البني الفاتح — حواف الشعار */
@@ -39,6 +40,7 @@ html {
   --border:     rgba(201,150,26,0.22);
   --border2:    rgba(12,12,12,0.08);
   --border-lt:  rgba(232,190,69,0.18);
+  --hero-overlay: rgba(12,12,12,0.55);
 
   /* ── الخطوط ── */
   --f-kufi:  'Noto Kufi Arabic', 'IBM Plex Sans Arabic', sans-serif;
@@ -46,7 +48,9 @@ html {
   --f-amiri: 'Amiri', 'Noto Kufi Arabic', serif;
   --f-serif: 'Cormorant Garamond', Georgia, serif;
 
+  /* ── الانتقالات ── */
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-default: all 0.3s ease;
 }
 
 body {
@@ -146,7 +150,7 @@ a { text-decoration: none; color: inherit; }
 .logo-mark.dark .logo-en { color: var(--muted); }
 
 /* ───────────────────────────────
-   3. NAVIGATION
+   3. NAVIGATION (محسّن بخلفية موحدة)
    ─────────────────────────────── */
 .nav {
   position: fixed;
@@ -156,7 +160,7 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
   justify-content: space-between;
   padding: 0.9rem 3.5rem;
-  background: linear-gradient(90deg, var(--leather-dk) 0%, #2E1206 40%, #3D1A08 100%);
+  background: var(--nav-bg);
   border-bottom: 1px solid rgba(201,150,26,0.35);
   box-shadow: 0 2px 24px rgba(0,0,0,0.5), inset 0 -1px 0 rgba(232,190,69,0.12);
   transition: padding 0.3s var(--ease), box-shadow 0.3s;
@@ -169,7 +173,7 @@ a { text-decoration: none; color: inherit; }
   background: linear-gradient(90deg, transparent 0%, rgba(232,190,69,0.5) 30%, rgba(242,216,120,0.7) 50%, rgba(232,190,69,0.5) 70%, transparent 100%);
 }
 .nav.scrolled {
-  background: linear-gradient(90deg, rgba(61,26,8,0.97) 0%, rgba(46,18,6,0.97) 50%, rgba(61,26,8,0.97) 100%);
+  background: rgba(10,10,10,0.97);
   backdrop-filter: blur(20px);
   padding: 0.7rem 3.5rem;
   box-shadow: 0 4px 32px rgba(0,0,0,0.6), inset 0 -1px 0 rgba(232,190,69,0.12);
@@ -197,7 +201,7 @@ a { text-decoration: none; color: inherit; }
   color: var(--leather-dk);
   background: linear-gradient(135deg, var(--gold-lt) 0%, var(--champagne) 50%, var(--gold-lt) 100%);
   padding: 0.55rem 1.5rem;
-  transition: all 0.25s;
+  transition: var(--transition-default);
   white-space: nowrap;
   border: 1px solid rgba(232,190,69,0.4);
   letter-spacing: 0.05em;
@@ -221,11 +225,11 @@ a { text-decoration: none; color: inherit; }
   width: 22px;
   height: 1.5px;
   background: var(--champagne);
-  transition: all 0.3s;
+  transition: var(--transition-default);
 }
 
 /* ───────────────────────────────
-   4. HERO SECTION
+   4. HERO SECTION (باستخدام الصورة المحلية)
    ─────────────────────────────── */
 .hero {
   position: relative;
@@ -239,7 +243,7 @@ a { text-decoration: none; color: inherit; }
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: url('https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+  background: url('../images/pana.jpeg') center/cover no-repeat;
   opacity: 0.28;
   transform: scale(1.05);
   animation: heroZoom 20s ease-in-out infinite alternate;
@@ -254,7 +258,7 @@ a { text-decoration: none; color: inherit; }
   background: linear-gradient(
     170deg,
     rgba(12,12,12,0.2) 0%,
-    rgba(12,12,12,0.55) 50%,
+    var(--hero-overlay) 50%,
     rgba(12,12,12,0.92) 100%
   );
 }
@@ -439,13 +443,13 @@ a { text-decoration: none; color: inherit; }
 .stat-item:last-child { border-left: none; }
 .stat-num {
   display: block;
-  font-family: var(--f-serif);
+  font-family: var(--f-serif), 'Courier New', monospace;
   font-size: 2rem;
   font-weight: 300;
   color: var(--gold-lt);
   line-height: 1;
   margin-bottom: 0.35rem;
-  transition: none; /* prevents flicker during counter animation */
+  transition: none;
 }
 .stat-lbl {
   display: block;
@@ -573,7 +577,7 @@ a { text-decoration: none; color: inherit; }
 .ornament-divider svg   { display: block; }
 
 /* ───────────────────────────────
-   10. FOOTER
+   10. FOOTER (محسّن للغة العربية)
    ─────────────────────────────── */
 footer {
   background: linear-gradient(180deg, #2A1005 0%, #1A0A03 60%, #0D0501 100%);
@@ -616,7 +620,7 @@ footer::after {
   font-style: italic;
   max-width: 280px;
   line-height: 2;
-  text-align: left;
+  text-align: right;
 }
 .footer-nav {
   display: flex;
@@ -654,7 +658,7 @@ footer::after {
 .footer-copy.ltr { direction: ltr; }
 
 /* ───────────────────────────────
-   11. WHATSAPP FLOATING BUTTON
+   11. WHATSAPP FLOATING BUTTON (محسّن لـ RTL)
    ─────────────────────────────── */
 .wa-float {
   position: fixed;
@@ -698,15 +702,15 @@ footer::after {
   font-size: 0.78rem;
   font-weight: 500;
   padding: 0;
-  border-radius: 0 100px 100px 0;
+  border-radius: 100px 0 0 100px;
   transition: max-width 0.4s var(--ease), padding 0.4s var(--ease);
-  margin-right: -4px;
+  margin-left: -4px;
   order: -1;
   direction: rtl;
 }
 .wa-float:hover .wa-float-label, .wa-float:focus-visible .wa-float-label {
   max-width: 180px;
-  padding: 0 1rem 0 1.2rem;
+  padding: 0 1.2rem 0 1rem;
 }
 .wa-float-pulse {
   position: absolute;
@@ -727,5 +731,75 @@ footer::after {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* ───────────────────────────────
+   13. RESPONSIVE ADJUSTMENTS
+   ─────────────────────────────── */
+@media (max-width: 992px) {
+  .nav {
+    padding: 0.9rem 1.8rem;
+  }
+  .nav.scrolled {
+    padding: 0.7rem 1.8rem;
+  }
+  .container {
+    padding: 0 1.8rem;
+  }
+  .hero-body {
+    padding: 0 1.8rem 4rem;
+  }
+  .stats-strip-inner {
+    padding: 0 1.8rem;
+  }
+  .section {
+    padding: 5rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: var(--nav-bg);
+    padding: 1.5rem;
+    gap: 1.2rem;
+    border-bottom: 1px solid rgba(201,150,26,0.3);
+  }
+  .nav-links.show {
+    display: flex;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .stat-item {
+    padding: 1.5rem 0.8rem;
+  }
+  .stat-num {
+    font-size: 1.5rem;
+  }
+  .stat-lbl {
+    font-size: 0.55rem;
+  }
+  .footer-top {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-quote {
+    text-align: center;
+    max-width: 100%;
+  }
+  .footer-nav {
+    justify-content: center;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
   }
 }
