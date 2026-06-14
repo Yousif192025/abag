@@ -91,6 +91,54 @@
       background-size: cover !important;
       background-position: center !important;
     }
+
+    /* تحسين معرض الصور - شبكة متجاوبة */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .g-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      cursor: pointer;
+      aspect-ratio: 1 / 1;
+    }
+    .g-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .g-item:hover img {
+      transform: scale(1.05);
+    }
+    .g-item-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      color: white;
+      padding: 20px 12px 12px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    .g-item:hover .g-item-overlay {
+      transform: translateY(0);
+    }
+    .g-item-label {
+      display: block;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+    .g-item-sub {
+      display: block;
+      font-size: 0.8rem;
+      opacity: 0.9;
+    }
   </style>
 </head>
 <body>
@@ -248,7 +296,7 @@
       <div class="about-grid">
         <figure class="about-img-frame reveal reveal-d1">
           <img
-            src="assets/images/img1.jpeg"
+            src="assets/images/img1.png"
             alt="صناعة العطور الفاخرة في عبق الياسمين"
             loading="lazy"
             width="700"
@@ -339,7 +387,7 @@
       <div class="prod-panel active" id="panel-western" role="tabpanel" aria-labelledby="tab-western">
         <article class="prod-card reveal reveal-d1">
           <div class="prod-card-img">
-            <img src="assets/images/img2.jpeg" alt="عطور فرنسية فاخرة" loading="lazy" width="500" height="667">
+            <img src="assets/images/img2.png" alt="عطور فرنسية فاخرة" loading="lazy" width="500" height="667">
             <span class="prod-badge">باريس</span>
           </div>
           <div class="prod-card-body">
@@ -352,7 +400,7 @@
 
         <article class="prod-card reveal reveal-d2">
           <div class="prod-card-img">
-            <img src="assets/images/img3.jpeg" alt="عطور إسبانية أندلسية" loading="lazy" width="500" height="667">
+            <img src="assets/images/img3.png" alt="عطور إسبانية أندلسية" loading="lazy" width="500" height="667">
             <span class="prod-badge">الأندلس</span>
           </div>
           <div class="prod-card-body">
@@ -365,7 +413,7 @@
 
         <article class="prod-card reveal reveal-d3">
           <div class="prod-card-img">
-            <img src="assets/images/img5.jpeg" alt="عطور سويسرية بدقة ونقاء" loading="lazy" width="500" height="667">
+            <img src="assets/images/img5.png" alt="عطور سويسرية بدقة ونقاء" loading="lazy" width="500" height="667">
             <span class="prod-badge">دقة ونقاء</span>
           </div>
           <div class="prod-card-body">
@@ -392,7 +440,7 @@
       <div class="prod-panel" id="panel-heritage" role="tabpanel" aria-labelledby="tab-heritage" hidden>
         <article class="prod-card reveal reveal-d1">
           <div class="prod-card-img">
-            <img src="assets/images/img6.jpeg" alt="العود والبخور والعنفر" loading="lazy" width="500" height="667">
+            <img src="assets/images/img6.png" alt="العود والبخور والعنفر" loading="lazy" width="500" height="667">
             <span class="prod-badge">أصالة فاخرة</span>
           </div>
           <div class="prod-card-body">
@@ -405,7 +453,7 @@
 
         <article class="prod-card reveal reveal-d2">
           <div class="prod-card-img">
-            <img src="assets/images/img7.jpeg" alt="المحلب والضفرة والمسك" loading="lazy" width="500" height="667">
+            <img src="assets/images/img7.png" alt="المحلب والضفرة والمسك" loading="lazy" width="500" height="667">
             <span class="prod-badge">ريحة ناشفة</span>
           </div>
           <div class="prod-card-body">
@@ -418,7 +466,7 @@
 
         <article class="prod-card reveal reveal-d3">
           <div class="prod-card-img">
-            <img src="assets/images/img9.jpeg" alt="مويات الريحة والبرائح" loading="lazy" width="500" height="667">
+            <img src="assets/images/img9.png" alt="مويات الريحة والبرائح" loading="lazy" width="500" height="667">
             <span class="prod-badge">نضارة لا تقاوم</span>
           </div>
           <div class="prod-card-body">
@@ -517,7 +565,7 @@
   </div>
 
   <!-- ════════════════════════════════════════
-       GALLERY — معرض الصور
+       GALLERY — معرض الصور (جميع الصور المطلوبة)
   ════════════════════════════════════════ -->
   <section class="gallery section-sm reveal" id="gallery" aria-labelledby="gallery-heading">
     <div class="container">
@@ -526,43 +574,129 @@
       <p class="body-text intro">اضغط على أي صورة لعرضها بالحجم الكامل</p>
 
       <div class="gallery-grid">
-        <div class="g-item g1"
-          data-lb-src="assets/images/imj4.jpeg"
-          data-lb-cap="التشكيلة الحصرية الفاخرة">
-          <img src="assets/images/imj4.jpeg" alt="زجاجات عطرية فاخرة" loading="lazy" width="900" height="600">
+        <!-- img1.png -->
+        <div class="g-item" data-lb-src="assets/images/img1.png" data-lb-cap="التشكيلة الحصرية الفاخرة - زجاجات عطرية كريستالية">
+          <img src="assets/images/img1.png" alt="زجاجات عطرية فاخرة" loading="lazy">
           <div class="g-item-overlay">
-            <span class="g-item-label">التشكيلة الحصرية الفاخرة</span>
-            <span class="g-item-sub">زجاجات كريستالية مصممة خصيصاً لتحتفظ بأرقى العطور</span>
+            <span class="g-item-label">التشكيلة الحصرية</span>
+            <span class="g-item-sub">زجاجات كريستالية فاخرة</span>
           </div>
         </div>
 
-        <div class="g-item g2"
-          data-lb-src="assets/images/imj8.jpeg"
-          data-lb-cap="أجود أنواع العود والبخور">
-          <img src="assets/images/imj8.jpeg" alt="أعواد البخور والعود التراثي" loading="lazy" width="700" height="467">
+        <!-- img2.png -->
+        <div class="g-item" data-lb-src="assets/images/img2.png" data-lb-cap="عطور فرنسية - باريس">
+          <img src="assets/images/img2.png" alt="عطور فرنسية فاخرة" loading="lazy">
           <div class="g-item-overlay">
-            <span class="g-item-label">أجود أنواع العود والبخور</span>
-            <span class="g-item-sub">إعداد تقليدي وتراثي أصيل بنكهة تفوح فخامة</span>
+            <span class="g-item-label">عطور فرنسية</span>
+            <span class="g-item-sub">تركيبات باريسية أصيلة</span>
           </div>
         </div>
 
-        <div class="g-item g3"
-          data-lb-src="assets/images/img1.jpeg"
-          data-lb-cap="زيوت عطرية نقية ومستوردة">
-          <img src="assets/images/img1.jpeg" alt="تركيبات وزيوت نقية" loading="lazy" width="700" height="467">
+        <!-- img3.png -->
+        <div class="g-item" data-lb-src="assets/images/img3.png" data-lb-cap="عطور إسبانية - الأندلس">
+          <img src="assets/images/img3.png" alt="عطور إسبانية أندلسية" loading="lazy">
           <div class="g-item-overlay">
-            <span class="g-item-label">زيوت عطرية نقية ومستوردة</span>
-            <span class="g-item-sub">مستخلصة من كبرى دور العطور في سويسرا وفرنسا</span>
+            <span class="g-item-label">عطور إسبانية</span>
+            <span class="g-item-sub">روائح أندلسية دافئة</span>
           </div>
         </div>
 
-        <div class="g-item g4"
-          data-lb-src="assets/images/img7.jpeg"
-          data-lb-cap="روائح التراث الأصيل">
-          <img src="assets/images/img7.jpeg" alt="منتجات سودانية وريحة ناشفة" loading="lazy" width="600" height="400">
+        <!-- img5.png -->
+        <div class="g-item" data-lb-src="assets/images/img5.png" data-lb-cap="عطور سويسرية - دقة ونقاء">
+          <img src="assets/images/img5.png" alt="عطور سويسرية" loading="lazy">
           <div class="g-item-overlay">
-            <span class="g-item-label">روائح التراث الأصيل</span>
-            <span class="g-item-sub">المحلب والضفرة والمسك المجهز بعناية فائقة</span>
+            <span class="g-item-label">عطور سويسرية</span>
+            <span class="g-item-sub">دقة سويسرية متناهية</span>
+          </div>
+        </div>
+
+        <!-- img6.png -->
+        <div class="g-item" data-lb-src="assets/images/img6.png" data-lb-cap="العود والبخور الفاخر">
+          <img src="assets/images/img6.png" alt="عود وبخور" loading="lazy">
+          <div class="g-item-overlay">
+            <span class="g-item-label">عود وبخور</span>
+            <span class="g-item-sub">أجود أنواع العود الفاخر</span>
+          </div>
+        </div>
+
+        <!-- img7.png -->
+        <div class="g-item" data-lb-src="assets/images/img7.png" data-lb-cap="المحلب والضفرة والمسك">
+          <img src="assets/images/img7.png" alt="محلب وضفرة ومسك" loading="lazy">
+          <div class="g-item-overlay">
+            <span class="g-item-label">ريحة ناشفة</span>
+            <span class="g-item-sub">محلب، ضفرة، مسك فاخر</span>
+          </div>
+        </div>
+
+        <!-- img9.png -->
+        <div class="g-item" data-lb-src="assets/images/img9.png" data-lb-cap="مويات الريحة والبرائح">
+          <img src="assets/images/img9.png" alt="مويات ريحة" loading="lazy">
+          <div class="g-item-overlay">
+            <span class="g-item-label">مويات الريحة</span>
+            <span class="g-item-sub">نضارة لا تقاوم</span>
+          </div>
+        </div>
+
+        <!-- img10.png -->
+        <div class="g-item" data-lb-src="assets/images/img10.png" data-lb-cap="تشكيلة مميزة من العطور">
+          <img src="assets/images/img10.png" alt="تشكيلة عطور" loading="lazy">
+          <div class="g-item-overlay">
+            <span class="g-item-label">تشكيلة مميزة</span>
+            <span class="g-item-sub">مجموعة حصرية متنوعة</span>
+          </div>
+        </div>
+
+        <!-- img12.png -->
+        <div class="g-item" data-lb-src="assets/images/img12.png" data-lb-cap="روائح شرقية أصيلة">
+          <img src="assets/images/img12.png" alt="روائح شرقية" loading="lazy">
+          <div class="g-item-overlay">
+            <span class="g-item-label">روائح شرقية</span>
+            <span class="g-item-sub">أصالة وعبق تراثي</span>
+          </div>
+        </div>
+
+        <!-- img13.png -->
+        <div class="g-item" data-lb-src="assets/images/img13.png" data-lb-cap="زجاجات عطرية فاخرة">
+          <img src="assets/images/img13.png" alt="زجاجات عطرية" loading="lazy">
+          <div class="g-item-overlay">
+            <span class="g-item-label">زجاجات فاخرة</span>
+            <span class="g-item-sub">تصاميم كريستالية أنيقة</span>
+          </div>
+        </div>
+
+        <!-- img14.png -->
+        <div class="g-item" data-lb-src="assets/images/img14.png" data-lb-cap="خلطات عطرية خاصة">
+          <img src="assets/images/img14.png" alt="خلطات عطرية" loading="lazy">
+          <div class="g-item-overlay">
+            <span class="g-item-label">خلطات خاصة</span>
+            <span class="g-item-sub">تركيب حسب الطلب</span>
+          </div>
+        </div>
+
+        <!-- img15.png -->
+        <div class="g-item" data-lb-src="assets/images/img15.png" data-lb-cap="منتجات سودانية أصيلة">
+          <img src="assets/images/img15.png" alt="منتجات سودانية" loading="lazy">
+          <div class="g-item-overlay">
+            <span class="g-item-label">تراث سوداني</span>
+            <span class="g-item-sub">أصالة وفخامة</span>
+          </div>
+        </div>
+
+        <!-- imj4.png -->
+        <div class="g-item" data-lb-src="assets/images/imj4.png" data-lb-cap="معرض العطور الفاخرة">
+          <img src="assets/images/imj4.png" alt="معرض عطور" loading="lazy">
+          <div class="g-item-overlay">
+            <span class="g-item-label">معرض العطور</span>
+            <span class="g-item-sub">أرقى التشكيلات</span>
+          </div>
+        </div>
+
+        <!-- imj8.png -->
+        <div class="g-item" data-lb-src="assets/images/imj8.png" data-lb-cap="بخور وعود تراثي">
+          <img src="assets/images/imj8.png" alt="بخور وعود" loading="lazy">
+          <div class="g-item-overlay">
+            <span class="g-item-label">بخور وعود</span>
+            <span class="g-item-sub">تراثي أصيل</span>
           </div>
         </div>
       </div>
