@@ -802,4 +802,10 @@ footer::after {
     flex-direction: column;
     text-align: center;
   }
+   .logo-img {
+  background-image: url('../images/logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
 }
+}
+
