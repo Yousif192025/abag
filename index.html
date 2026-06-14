@@ -35,6 +35,9 @@
   <link rel="icon" type="image/png" href="assets/images/logo.png">
   <link rel="apple-touch-icon" href="assets/images/logo.png">
 
+  <!-- Preload hero image for better performance -->
+  <link rel="preload" as="image" href="assets/images/pana.jpeg" fetchpriority="high">
+
   <!-- ════════════════════════════════════════
        FONTS (preconnect for performance)
   ════════════════════════════════════════ -->
@@ -140,33 +143,34 @@
       opacity: 0.9;
     }
   </style>
+
   <!-- Structured Data / JSON-LD for SEO -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "عبق الياسمين للعطور",
-  "alternateName": "ABAG Fragrances",
-  "description": "محلات عبق الياسمين للعطور بوجهتها الراقية في ود مدني تقدم أرقى التركيبات الفرنسية، الإسبانية، السويسرية، وأجود أنواع العود والبخور والمحلب والضفرة بتراث سوداني عريق.",
-  "url": "https://yousif192025.github.io/abag/",
-  "logo": "https://yousif192025.github.io/abag/assets/images/logo.png",
-  "image": "https://yousif192025.github.io/abag/assets/images/logo.png",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "ود مدني",
-    "addressCountry": "SD",
-    "addressRegion": "الجزيرة",
-    "streetAddress": "السوق الكبير، جنوب المساطب"
-  },
-  "telephone": "+249127068886",
-  "priceRange": "$$",
-  "openingHours": "Sa-Th 09:00-22:00",
-  "sameAs": [
-    "https://www.facebook.com/profile.php?id=61589867810600",
-    "https://www.tiktok.com/@user7852165986675"
-  ]
-}
-</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "عبق الياسمين للعطور",
+    "alternateName": "ABAG Fragrances",
+    "description": "محلات عبق الياسمين للعطور بوجهتها الراقية في ود مدني تقدم أرقى التركيبات الفرنسية، الإسبانية، السويسرية، وأجود أنواع العود والبخور والمحلب والضفرة بتراث سوداني عريق.",
+    "url": "https://yousif192025.github.io/abag/",
+    "logo": "https://yousif192025.github.io/abag/assets/images/logo.png",
+    "image": "https://yousif192025.github.io/abag/assets/images/logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "ود مدني",
+      "addressCountry": "SD",
+      "addressRegion": "الجزيرة",
+      "streetAddress": "السوق الكبير، جنوب المساطب"
+    },
+    "telephone": "+249127068886",
+    "priceRange": "$$",
+    "openingHours": "Sa-Th 09:00-22:00",
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61589867810600",
+      "https://www.tiktok.com/@user7852165986675"
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -861,8 +865,8 @@
             <div>
               <span class="contact-info-label">تابعونا على منصات التواصل الاجتماعي</span>
               <div class="contact-social">
-                <a href="https://www.facebook.com/profile.php?id=61589867810600" class="social-btn" target="_blank" rel="noopener">فيسبوك</a>
-                <a href="https://www.tiktok.com/@user7852165986675" class="social-btn" target="_blank" rel="noopener">تيك توك</a>
+                <a href="https://www.facebook.com/profile.php?id=61589867810600" class="social-btn" target="_blank" rel="noopener" aria-label="صفحتنا على فيسبوك - تابعونا للحصول على آخر العروض">فيسبوك</a>
+                <a href="https://www.tiktok.com/@user7852165986675" class="social-btn" target="_blank" rel="noopener" aria-label="صفحتنا على تيك توك - اكتشف عطورنا الجديدة">تيك توك</a>
               </div>
             </div>
           </div>
@@ -947,7 +951,7 @@
    href="https://wa.me/249127068886?text=السلام%20عليكم،%20أريد%20الاستفسار%20عن%20منتجاتكم"
    target="_blank"
    rel="noopener"
-   aria-label="تواصل معنا عبر واتساب">
+   aria-label="تواصل معنا عبر واتساب - خدمة العملاء متاحة 24 ساعة">
   <div class="wa-float-pulse" aria-hidden="true"></div>
   <span class="wa-float-label">تواصل عبر واتساب</span>
   <div class="wa-float-circle">
