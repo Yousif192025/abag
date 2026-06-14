@@ -6,7 +6,6 @@
    ════════════════════════════════════════════════════════════════ */
 
 document.addEventListener('DOMContentLoaded', () => {
-
   /* ───────────────────────────────
      1. SCROLL REVEAL
      Adds the ".in" class to any element with
