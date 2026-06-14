@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- الصفحة الرئيسية -->
+  <url>
+    <loc>https://yousif192025.github.io/abag/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.00</priority>
+  </url>
+  
+  <!-- صفحة من نحن -->
+  <url>
+    <loc>https://yousif192025.github.io/abag/pages/about.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  
+  <!-- صفحة المنتجات والخدمات -->
+  <url>
+    <loc>https://yousif192025.github.io/abag/pages/services.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  
+  <!-- صفحة اتصل بنا -->
+  <url>
+    <loc>https://yousif192025.github.io/abag/pages/contact.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  
+  <!-- صفحة سياسة الخصوصية -->
+  <url>
+    <loc>https://yousif192025.github.io/abag/pages/privacy.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  
+  <!-- صفحة الشروط والأحكام -->
+  <url>
+    <loc>https://yousif192025.github.io/abag/pages/terms.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.50</priority>
+  </url>
+  
+</urlset>
