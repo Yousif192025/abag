@@ -1,4 +1,31 @@
+# ════════════════════════════════════════════════════════════════
+# ROBOTS.TXT
+# عبق الياسمين للعطور — توجيه محركات البحث
+# ════════════════════════════════════════════════════════════════
+
+# السماح لجميع محركات البحث بفهرسة الموقع
 User-agent: *
 Allow: /
 
+# تحديد موقع خريطة الموقع (النطاق الجديد)
 Sitemap: https://abag.vercel.app/sitemap.xml
+
+# تحديد وقت إعادة الزيارة (بالأيام)
+Crawl-delay: 5
+
+# محركات البحث المحددة
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 3
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 3
+
+User-agent: Facebookbot
+Allow: /
+Crawl-delay: 3
+
+User-agent: Twitterbot
+Allow: /
+Crawl-delay: 3
