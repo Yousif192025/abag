@@ -1,7 +1,7 @@
 /* ════════════════════════════════════════════════════════════════
    RESPONSIVE.CSS
    عبق الياسمين للعطور — التصميم المتجاوب
-   نقاط التوقف: 1024px (تابلت) و 640px (جوال)
+   نقاط التوقف: 1024px (تابلت) و 640px (جوال) و 380px (شاشات صغيرة جدًا)
    ════════════════════════════════════════════════════════════════ */
 
 /* ───────────────────────────────
@@ -143,7 +143,11 @@
     font-size: 0.6rem;
   }
   
-  /* Contact form */
+  /* Contact form - تحسين لحقول الإدخال */
+  .form-input, .form-select, .form-textarea {
+    font-size: 16px;
+    padding: 0.8rem 0.8rem;
+  }
   .contact-info-item { 
     flex-direction: column; 
     gap: 0.5rem; 
@@ -182,7 +186,9 @@
   
   /* Stats strip - عمود واحد على الشاشات الصغيرة جدًا */
   .stat-item { width: 100%; }
-  .stat-item:nth-child(1), .stat-item:nth-child(2) { border-top: 1px solid rgba(184,144,42,0.1); }
+  .stat-item:nth-child(1), .stat-item:nth-child(2) { 
+    border-top: 1px solid rgba(184,144,42,0.1); 
+  }
   .stat-item:first-child { border-top: none; }
   
   /* Gallery - عمود واحد */
@@ -212,6 +218,78 @@
   }
   .about-stat-n { font-size: 1.2rem; }
   .about-stat-l { font-size: 0.55rem; }
+}
+
+/* ───────────────────────────────
+   EXTRA SMALL MOBILE — max-width: 380px
+   (للهواتف الصغيرة جدًا مثل iPhone SE)
+   ─────────────────────────────── */
+@media (max-width: 380px) {
+  .container { padding: 0 0.8rem; }
+  .hero-body { padding: 0 0.8rem 2.5rem; }
+  .hero-title { font-size: 1.5rem; }
+  .hero-title-en { font-size: 0.85rem; }
+  .hero-sub { font-size: 0.7rem; margin: 0.8rem 0 1.2rem; }
+  .hero-btns .btn-primary, .hero-btns .btn-ghost { 
+    padding: 0.5rem 1rem; 
+    font-size: 0.65rem; 
+  }
+  .hero-eyebrow { font-size: 0.55rem; }
+  .hero-tagline { font-size: 0.7rem; }
+  
+  /* Stats - تقليل التباعد */
+  .stat-item { padding: 0.6rem 0.3rem; }
+  .stat-num { font-size: 1rem; }
+  .stat-lbl { font-size: 0.45rem; }
+  
+  /* Gallery - صورة كاملة العرض */
+  .gallery-grid { 
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .g-item {
+    aspect-ratio: 16 / 9;
+  }
+  
+  /* Product cards - تقليل الحجم */
+  .prod-card-img { aspect-ratio: 1/1; }
+  .prod-card-body { padding: 0.8rem; }
+  .prod-name { font-size: 0.9rem; }
+  .prod-desc { font-size: 0.7rem; }
+  .prod-custom { padding: 1.2rem; }
+  .prod-custom-title { font-size: 1rem; }
+  .prod-custom-desc { font-size: 0.8rem; }
+  
+  /* Features - تقليل */
+  .feat-card { padding: 1rem; }
+  .feat-num { font-size: 1.5rem; }
+  .feat-title { font-size: 0.85rem; }
+  .feat-desc { font-size: 0.75rem; }
+  
+  /* Testimonials */
+  .testi-card { padding: 1rem; }
+  .testi-text { font-size: 0.75rem; }
+  .testi-quote-mark { font-size: 2rem; top: 0.5rem; left: 0.8rem; }
+  
+  /* Contact */
+  .contact-info-item { margin-bottom: 1rem; }
+  .contact-info-icon { width: 30px; height: 30px; font-size: 0.7rem; }
+  .contact-info-val { font-size: 0.75rem; }
+  .form-input, .form-select, .form-textarea { 
+    font-size: 14px; 
+    padding: 0.5rem 0.6rem; 
+  }
+  .form-submit { font-size: 0.7rem; padding: 0.7rem; }
+  
+  /* Footer */
+  .footer-nav a { font-size: 0.55rem; }
+  .footer-copy { font-size: 0.5rem; }
+  .footer-quote { font-size: 0.8rem; }
+  
+  /* WhatsApp button - أصغر */
+  .wa-float { bottom: 0.8rem; left: 0.8rem; }
+  .wa-float-circle { width: 40px; height: 40px; }
+  .wa-float-circle img { width: 20px; height: 20px; }
 }
 
 /* ───────────────────────────────
