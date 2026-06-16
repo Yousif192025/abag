@@ -6,7 +6,7 @@
 # السماح لجميع محركات البحث بفهرسة الموقع
 User-agent: *
 Allow: /
-
+google-site-verification: googlee17eddb793ae1a72.html
 # تحديد موقع خريطة الموقع
 Sitemap: https://yousif192025.github.io/abag/sitemap.xml
 
