@@ -352,6 +352,17 @@
   }
   .prod-custom-cta { white-space: normal; }
 }
+@media (max-width: 380px) {
+  .prod-custom {
+    padding: 1rem;
+  }
+  .prod-custom-title {
+    font-size: 1rem;
+  }
+  .prod-custom-desc {
+    font-size: 0.8rem;
+  }
+}
 
 /* ───────────────────────────────
    3. FEATURES — لماذا نحن
@@ -415,6 +426,17 @@
   }
   .feat-card {
     padding: 1.8rem;
+  }
+}
+@media (max-width: 380px) {
+  .feat-card {
+    padding: 1rem;
+  }
+  .feat-title {
+    font-size: 0.85rem;
+  }
+  .feat-desc {
+    font-size: 0.75rem;
   }
 }
 
@@ -497,6 +519,32 @@
   }
   .g-item {
     aspect-ratio: 1 / 1;
+  }
+}
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .g-item {
+    aspect-ratio: 4 / 3;
+  }
+}
+@media (max-width: 380px) {
+  .gallery-grid {
+    gap: 6px;
+  }
+  .g-item {
+    aspect-ratio: 16 / 9;
+  }
+  .g-item-overlay {
+    padding: 0.8rem;
+  }
+  .g-item-label {
+    font-size: 0.6rem;
+  }
+  .g-item-sub {
+    font-size: 0.5rem;
   }
 }
 
@@ -599,6 +647,21 @@
     font-size: 0.6rem;
   }
 }
+@media (max-width: 380px) {
+  .lightbox-nav {
+    width: 30px;
+    height: 30px;
+    font-size: 0.7rem;
+  }
+  .lightbox-close {
+    font-size: 0.5rem;
+    padding: 0.2rem 0.5rem;
+  }
+  .lightbox-caption {
+    font-size: 0.5rem;
+    padding: 0.1rem 0.4rem;
+  }
+}
 
 /* ───────────────────────────────
    6. TESTIMONIALS — آراء العملاء (محسّن للجوال)
@@ -688,6 +751,20 @@
   }
   .testi-card {
     padding: 1.8rem;
+  }
+}
+@media (max-width: 380px) {
+  .testi-card {
+    padding: 1rem;
+  }
+  .testi-text {
+    font-size: 0.75rem;
+    padding-top: 0.8rem;
+  }
+  .testi-quote-mark {
+    font-size: 2.5rem;
+    top: 0.8rem;
+    left: 1rem;
   }
 }
 
@@ -831,6 +908,31 @@
   .contact-social {
     flex-wrap: wrap;
   }
+  .form-input, .form-select, .form-textarea {
+    font-size: 16px;
+    padding: 0.7rem 0.8rem;
+  }
+}
+@media (max-width: 380px) {
+  .contact-info-item {
+    margin-bottom: 1rem;
+  }
+  .contact-info-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 0.7rem;
+  }
+  .contact-info-val {
+    font-size: 0.75rem;
+  }
+  .form-input, .form-select, .form-textarea {
+    font-size: 14px;
+    padding: 0.5rem 0.6rem;
+  }
+  .form-submit {
+    font-size: 0.7rem;
+    padding: 0.7rem;
+  }
 }
 
 /* ───────────────────────────────
@@ -878,5 +980,17 @@
   .page-content p,
   .page-content li {
     font-size: 0.9rem;
+  }
+}
+@media (max-width: 380px) {
+  .page-hero {
+    padding: 6rem 0 2rem;
+  }
+  .page-content h2 {
+    font-size: 1.2rem;
+  }
+  .page-content p,
+  .page-content li {
+    font-size: 0.8rem;
   }
 }
