@@ -35,9 +35,6 @@
   <link rel="icon" type="image/png" href="../assets/images/logo.png">
   <link rel="apple-touch-icon" href="../assets/images/logo.png">
 
-  <!-- Preload hero image for better performance -->
-  <link rel="preload" as="image" href="../assets/images/img1.png" fetchpriority="high">
-
   <!-- ════════════════════════════════════════
        FONTS
   ════════════════════════════════════════ -->
@@ -54,30 +51,6 @@
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/components.css">
   <link rel="stylesheet" href="../assets/css/responsive.css">
-
-  <style>
-    /* إصلاح مشكلة القائمة على الجوال */
-    @media (max-width: 1024px) {
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        background: #0A0A0A;
-        padding: 1.5rem;
-        gap: 1.2rem;
-        border-bottom: 1px solid rgba(201,150,26,0.3);
-      }
-      .nav-links.show {
-        display: flex;
-      }
-      .hamburger {
-        display: flex;
-      }
-    }
-  </style>
 
   <!-- Structured Data / JSON-LD for SEO -->
   <script type="application/ld+json">
