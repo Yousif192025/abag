@@ -25,13 +25,13 @@ html {
   --ink:        #0C0C0C;
   --ink2:       #1A1A1A;
   --nav-bg:     #0A0A0A;
-  --leather-dk: #3D1A08;   /* البني الداكن جداً — خلفية الشعار */
-  --leather-md: #5C2A0E;   /* البني المتوسط — جسم الشعار */
-  --leather-lt: #7A3C1A;   /* البني الفاتح — حواف الشعار */
-  --gold-dk:    #8B6914;   /* الذهبي الداكن — ظلال الشعار */
-  --gold:       #C9961A;   /* الذهبي الأساسي — جسم الخط */
-  --gold-lt:    #E8BE45;   /* الذهبي المضيء — بريق الشعار */
-  --champagne:  #F2D878;   /* الذهبي الكريمي الفاتح */
+  --leather-dk: #3D1A08;
+  --leather-md: #5C2A0E;
+  --leather-lt: #7A3C1A;
+  --gold-dk:    #8B6914;
+  --gold:       #C9961A;
+  --gold-lt:    #E8BE45;
+  --champagne:  #F2D878;
   --ivory:      #FAF7F2;
   --ivory2:     #F3EDE2;
   --white:      #FFFFFF;
@@ -42,7 +42,7 @@ html {
   --border-lt:  rgba(232,190,69,0.18);
   --hero-overlay: rgba(12,12,12,0.55);
 
-  /* ── الخطوط ── */
+  /* ── الخطوط مع font-display ── */
   --f-kufi:  'Noto Kufi Arabic', 'IBM Plex Sans Arabic', sans-serif;
   --f-ibm:   'IBM Plex Sans Arabic', sans-serif;
   --f-amiri: 'Amiri', 'Noto Kufi Arabic', serif;
@@ -53,6 +53,24 @@ html {
   --transition-default: all 0.3s ease;
 }
 
+/* تحسين عرض الخطوط */
+@font-face {
+  font-family: 'Noto Kufi Arabic';
+  font-display: swap;
+}
+@font-face {
+  font-family: 'IBM Plex Sans Arabic';
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Amiri';
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-display: swap;
+}
+
 body {
   font-family: var(--f-ibm);
   font-size: 1rem;
@@ -61,6 +79,7 @@ body {
   background: var(--ivory);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection { background: var(--gold); color: var(--white); }
@@ -69,8 +88,25 @@ body {
 ::-webkit-scrollbar-track { background: var(--ivory2); }
 ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 
-img { display: block; max-width: 100%; }
+img { display: block; max-width: 100%; height: auto; }
 a { text-decoration: none; color: inherit; }
+
+/* تحسين اللمس على الجوال */
+button, 
+a, 
+[role="button"],
+.g-item,
+.prod-tab,
+.wa-float,
+.social-btn,
+.nav-cta,
+.btn-primary,
+.btn-ghost,
+.form-submit,
+.lightbox-nav,
+.lightbox-close {
+  touch-action: manipulation;
+}
 
 /* Visually hidden but accessible to screen readers */
 .visually-hidden {
@@ -150,7 +186,7 @@ a { text-decoration: none; color: inherit; }
 .logo-mark.dark .logo-en { color: var(--muted); }
 
 /* ───────────────────────────────
-   3. NAVIGATION (محسّن بخلفية موحدة)
+   3. NAVIGATION
    ─────────────────────────────── */
 .nav {
   position: fixed;
@@ -229,7 +265,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ───────────────────────────────
-   4. HERO SECTION (باستخدام الصورة المحلية)
+   4. HERO SECTION
    ─────────────────────────────── */
 .hero {
   position: relative;
@@ -527,7 +563,7 @@ a { text-decoration: none; color: inherit; }
 }
 .body-text.intro { margin-top: 0.5rem; max-width: 580px; }
 
-/* Text on dark backgrounds (replaces former inline styles) */
+/* Text on dark backgrounds */
 .text-on-dark {
   font-family: var(--f-ibm);
   font-size: 0.95rem;
@@ -577,7 +613,7 @@ a { text-decoration: none; color: inherit; }
 .ornament-divider svg   { display: block; }
 
 /* ───────────────────────────────
-   10. FOOTER (محسّن للغة العربية)
+   10. FOOTER
    ─────────────────────────────── */
 footer {
   background: linear-gradient(180deg, #2A1005 0%, #1A0A03 60%, #0D0501 100%);
@@ -658,7 +694,7 @@ footer::after {
 .footer-copy.ltr { direction: ltr; }
 
 /* ───────────────────────────────
-   11. WHATSAPP FLOATING BUTTON (محسّن لـ RTL)
+   11. WHATSAPP FLOATING BUTTON
    ─────────────────────────────── */
 .wa-float {
   position: fixed;
@@ -725,7 +761,34 @@ footer::after {
 }
 
 /* ───────────────────────────────
-   12. ACCESSIBILITY: REDUCED MOTION
+   12. FOCUS INDICATORS — Accessibility
+   ─────────────────────────────── */
+a:focus-visible,
+button:focus-visible,
+.g-item:focus-visible,
+.nav-cta:focus-visible,
+.btn-primary:focus-visible,
+.btn-ghost:focus-visible,
+.social-btn:focus-visible,
+.prod-tab:focus-visible,
+.wa-float:focus-visible,
+.form-input:focus-visible,
+.form-select:focus-visible,
+.form-textarea:focus-visible,
+.form-submit:focus-visible,
+.lightbox-nav:focus-visible,
+.lightbox-close:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ───────────────────────────────
+   13. ACCESSIBILITY: REDUCED MOTION
    ─────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -735,7 +798,7 @@ footer::after {
 }
 
 /* ───────────────────────────────
-   13. RESPONSIVE ADJUSTMENTS
+   14. RESPONSIVE ADJUSTMENTS
    ─────────────────────────────── */
 @media (max-width: 992px) {
   .nav {
@@ -757,92 +820,7 @@ footer::after {
     padding: 5rem 0;
   }
 }
-/* ════════════════════════════════════════════════════════════════
-   FOCUS INDICATORS — لتحسين إمكانية الوصول (Accessibility)
-   ════════════════════════════════════════════════════════════════ */
 
-/* Focus outline for all interactive elements */
-a:focus-visible,
-button:focus-visible,
-.g-item:focus-visible,
-.nav-cta:focus-visible,
-.btn-primary:focus-visible,
-.btn-ghost:focus-visible,
-.social-btn:focus-visible,
-.prod-tab:focus-visible,
-.wa-float:focus-visible,
-.form-input:focus-visible,
-.form-select:focus-visible,
-.form-textarea:focus-visible,
-.form-submit:focus-visible,
-.lightbox-nav:focus-visible,
-.lightbox-close:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 3px;
-  border-radius: 4px;
-}
-
-/* Special focus for the skip link */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: var(--gold);
-  color: var(--ink);
-  padding: 0.6rem 1.2rem;
-  font-family: var(--f-kufi);
-  font-size: 0.8rem;
-  z-index: 1000;
-  transition: top 0.2s;
-  text-decoration: none;
-}
-
-.skip-link:focus-visible {
-  top: 0;
-  outline: 2px solid var(--white);
-  outline-offset: 2px;
-}
-
-/* Prevent focus outline on mouse click (only show for keyboard navigation) */
-*:focus:not(:focus-visible) {
-  outline: none;
-}
-
-/* Focus style for cards and gallery items */
-.prod-card:focus-visible,
-.testi-card:focus-visible,
-.feat-card:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 2px;
-}
-
-/* Form focus improvement */
-.form-input:focus-visible,
-.form-select:focus-visible,
-.form-textarea:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 2px;
-  border-color: transparent;
-}
-
-/* Button focus improvement */
-.nav-cta:focus-visible {
-  outline: 2px solid var(--champagne);
-  outline-offset: 2px;
-}
-
-/* WhatsApp button focus */
-.wa-float:focus-visible .wa-float-circle {
-  outline: 2px solid var(--gold);
-  outline-offset: 4px;
-}
-
-/* Lightbox navigation focus */
-.lightbox-nav:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 4px;
-  background: rgba(0,0,0,0.3);
-}
 @media (max-width: 768px) {
   .nav-links {
     display: none;
@@ -887,10 +865,106 @@ button:focus-visible,
     flex-direction: column;
     text-align: center;
   }
-   .logo-img {
-  background-image: url('../images/logo.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-}
 }
 
+/* ───────────────────────────────
+   15. EXTRA SMALL MOBILE — max-width: 380px
+   ─────────────────────────────── */
+@media (max-width: 380px) {
+  .nav {
+    padding: 0.6rem 1rem;
+  }
+  .nav.scrolled {
+    padding: 0.5rem 1rem;
+  }
+  .container {
+    padding: 0 0.8rem;
+  }
+  .hero-body {
+    padding: 0 0.8rem 2.5rem;
+  }
+  .hero-title {
+    font-size: 1.5rem;
+  }
+  .hero-title-en {
+    font-size: 0.85rem;
+  }
+  .hero-sub {
+    font-size: 0.7rem;
+    margin: 0.8rem 0 1.2rem;
+  }
+  .hero-btns .btn-primary,
+  .hero-btns .btn-ghost {
+    padding: 0.5rem 1rem;
+    font-size: 0.65rem;
+  }
+  .hero-eyebrow {
+    font-size: 0.55rem;
+  }
+  .hero-tagline {
+    font-size: 0.7rem;
+  }
+  .hero-scroll-hint {
+    display: none;
+  }
+  
+  /* Stats strip */
+  .stat-item {
+    padding: 0.6rem 0.3rem;
+  }
+  .stat-num {
+    font-size: 1rem;
+  }
+  .stat-lbl {
+    font-size: 0.45rem;
+  }
+  
+  /* Section titles */
+  .section-title,
+  .section-title-light {
+    font-size: 1.4rem;
+  }
+  .eyebrow {
+    font-size: 0.5rem;
+  }
+  .section {
+    padding: 3rem 0;
+  }
+  .section-sm {
+    padding: 2.5rem 0;
+  }
+  
+  /* Footer */
+  .footer-nav a {
+    font-size: 0.55rem;
+  }
+  .footer-copy {
+    font-size: 0.5rem;
+  }
+  .footer-quote {
+    font-size: 0.8rem;
+  }
+  .footer-top {
+    gap: 1rem;
+  }
+  .footer-nav {
+    gap: 0.8rem;
+  }
+  
+  /* WhatsApp button - أصغر */
+  .wa-float {
+    bottom: 0.8rem;
+    left: 0.8rem;
+  }
+  .wa-float-circle {
+    width: 40px;
+    height: 40px;
+  }
+  .wa-float-circle img {
+    width: 20px;
+    height: 20px;
+  }
+  .wa-float-label {
+    display: none;
+  }
+}
