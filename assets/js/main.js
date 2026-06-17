@@ -233,12 +233,15 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ───────────────────────────────
      4. SMOOTH SCROLL for anchor links
         (with offset for fixed header)
+        ✅ تم التعديل: إضافة requestAnimationFrame
+        لحل مشكلة انزلاق القائمة
      ─────────────────────────────── */
   const headerHeight = () => {
     const navBar = document.querySelector('.nav');
     return navBar ? navBar.offsetHeight : 80;
   };
 
+  // استخدام requestAnimationFrame لتجنب التعارض مع CSS scroll-margin
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
@@ -247,18 +250,22 @@ document.addEventListener('DOMContentLoaded', () => {
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
         e.preventDefault();
-        const elementPosition = targetElement.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.scrollY - headerHeight();
         
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-        
-        // Close mobile menu if open
+        // إغلاق القائمة المتنقلة فورًا (قبل التمرير)
         if (mobileOpen) {
           closeMobileNav();
         }
+        
+        // استخدام requestAnimationFrame لضمان تنفيذ التمرير بعد إغلاق القائمة
+        requestAnimationFrame(() => {
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.scrollY - headerHeight();
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        });
       }
     });
   });
