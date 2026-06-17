@@ -142,6 +142,10 @@
       font-size: 0.8rem;
       opacity: 0.9;
     }
+    /* إضافة مسافة علوية للعناصر المستهدفة بالتمرير */
+      section[id] {
+      scroll-margin-top: 90px; /* ارتفاع الشريط الثابت + مسافة إضافية */
+   }
   </style>
 
   <!-- Structured Data / JSON-LD for SEO -->
@@ -964,19 +968,20 @@
      JAVASCRIPT (external, split by purpose)
 ════════════════════════════════════════ -->
 <!-- ════════════════════════════════════════
-     JAVASCRIPT (external + inline smooth scroll fix)
+     SMOOTH SCROLL FIX — للتمرير السلس وإغلاق القائمة
 ════════════════════════════════════════ -->
-
-<!-- الكود المحسن للتمرير السلس وإغلاق القائمة -->
+  <script src="assets/js/animations.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+  <!-- ⬇️ أضف الكود الجديد هنا ⬇️ -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // Get the height of the fixed navigation bar
+    // حساب ارتفاع الشريط الثابت
     const getNavHeight = () => {
       const nav = document.querySelector('.nav');
       return nav ? nav.offsetHeight : 80;
     };
 
-    // Select all anchor links that start with "#"
+    // تحديد جميع الروابط الداخلية التي تبدأ بـ "#"
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const targetId = this.getAttribute('href');
@@ -996,7 +1001,7 @@
             behavior: 'smooth'
           });
 
-          // Close mobile menu if open
+          // إغلاق القائمة المتنقلة إذا كانت مفتوحة
           if (document.body.classList.contains('nav-mobile-open')) {
             const hamburger = document.getElementById('hamburger');
             if (hamburger) {
@@ -1010,9 +1015,6 @@
     });
   });
 </script>
-
-<script src="assets/js/animations.js" defer></script>
-<script src="assets/js/main.js" defer></script>
 
 </body>
 </html>
