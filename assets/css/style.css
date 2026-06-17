@@ -968,3 +968,12 @@ button:focus-visible,
     display: none;
   }
 }
+/* حل مشكلة انزلاق القائمة عند التمرير */
+html {
+  scroll-padding-top: 90px; /* ارتفاع الشريط الثابت + مسافة إضافية */
+}
+
+/* أو بدلاً من ذلك، أضف لكل قسم */
+section[id] {
+  scroll-margin-top: 90px;
+}
