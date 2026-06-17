@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
+/*
   /* ───────────────────────────────
      4. SMOOTH SCROLL for anchor links
         (with offset for fixed header)
@@ -269,7 +269,42 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
+*/
+     /* ───────────────────────────────
+     4. SMOOTH SCROLL for anchor links
+        (مع إصلاح مشكلة الجوال)
+     ─────────────────────────────── */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#' || targetId === '') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        
+        // إغلاق القائمة المتنقلة فوراً
+        if (mobileOpen) {
+          closeMobileNav();
+        }
+        
+        // حساب ارتفاع الشريط الثابت
+        const navBar = document.querySelector('.nav');
+        const navHeight = navBar ? navBar.offsetHeight : 80;
+        
+        // حساب موضع الهدف مع مراعاة ارتفاع الشريط
+        const targetRect = targetElement.getBoundingClientRect();
+        const absoluteTargetTop = targetRect.top + window.pageYOffset;
+        const offsetPosition = absoluteTargetTop - navHeight - 10; // 10px مسافة إضافية
+        
+        // التمرير المباشر بدون behavior: 'smooth' لتجنب مشاكل الجوال
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
   /* ───────────────────────────────
      5. ACTIVE NAVIGATION HIGHLIGHT
         (based on scroll position)
