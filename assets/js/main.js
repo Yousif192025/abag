@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
+/*
   /* ───────────────────────────────
      4. SMOOTH SCROLL for anchor links
         (with offset for fixed header)
@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
+*/
   /* ───────────────────────────────
      5. ACTIVE NAVIGATION HIGHLIGHT
         (based on scroll position)
