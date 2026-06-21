@@ -1,0 +1,379 @@
+/* =====================================================
+   nav-mobile-fix.css
+   ✅ إصلاح شامل لقائمة الجوال — عبق الياسمين
+   أضف هذا الملف في index.html بعد سطر responsive.css:
+   <link rel="stylesheet" href="assets/css/nav-mobile-fix.css">
+   ===================================================== */
+
+/* ─── متغيرات القائمة ─────────────────────────────── */
+:root {
+  --nav-transition: 320ms cubic-bezier(0.4, 0, 0.2, 1);
+  --nav-overlay-bg: rgba(0, 0, 0, 0.55);
+  --nav-z-index: 1000;
+  --nav-overlay-z: 999;
+  --header-height: 70px; /* اضبط هذه القيمة لتوافق ارتفاع الهيدر الفعلي */
+}
+
+/* ─── 1. إصلاح scroll-behavior على مستوى الصفحة ───── */
+html {
+  scroll-behavior: smooth;
+  /* مهم: يمنع القفز المفاجئ عند النقر على anchor */
+  scroll-padding-top: calc(var(--header-height) + 16px);
+}
+
+/* ─── 2. الهيدر: تثبيت الموضع بدون تشوّه ───────────  */
+header,
+.site-header,
+#header,
+.header {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: var(--nav-z-index);
+  /* منع الهيدر من تحريك العناصر خلفه */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ─── 3. Body: مسافة علوية بحجم الهيدر ─────────────── */
+body {
+  padding-top: var(--header-height);
+}
+
+/* تأثير scroll على الهيدر */
+header.scrolled,
+.site-header.scrolled,
+#header.scrolled {
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ─── 4. Overlay (الطبقة المعتمة خلف القائمة) ──────── */
+/* يجب أن يكون هذا العنصر موجوداً في HTML:
+   <div class="nav-overlay" data-nav-overlay></div>
+   إذا لم يكن موجوداً، سيُضاف بواسطة JS أدناه */
+.nav-overlay,
+[data-nav-overlay] {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--nav-overlay-bg);
+  z-index: var(--nav-overlay-z);
+  opacity: 0;
+  transition: opacity var(--nav-transition);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body.nav-mobile-open .nav-overlay,
+body.nav-mobile-open [data-nav-overlay] {
+  display: block;
+  opacity: 1;
+}
+
+/* ─── 5. القائمة الجانبية (Mobile Menu) ─────────────── */
+.mobile-menu,
+[data-mobile-menu],
+.nav-mobile,
+.mobile-nav,
+.hamburger-menu,
+.menu-mobile {
+  position: fixed !important;
+  top: var(--header-height);
+  /* RTL: تبدأ من اليمين */
+  right: -100%;
+  left: auto;
+  width: min(320px, 85vw);
+  height: calc(100dvh - var(--header-height));
+  /* fallback للمتصفحات القديمة */
+  height: calc(100vh - var(--header-height));
+
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+
+  z-index: var(--nav-z-index);
+
+  /* ✅ الانتقال السلس عند الفتح والإغلاق */
+  transition: right var(--nav-transition);
+
+  /* منع التفاعل بينما مغلقة */
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* اللغة العربية: القائمة تأتي من اليسار */
+[dir="rtl"] .mobile-menu,
+[dir="rtl"] [data-mobile-menu],
+[dir="rtl"] .nav-mobile,
+[dir="rtl"] .mobile-nav,
+.rtl .mobile-menu {
+  right: auto;
+  left: -100%;
+  transition: left var(--nav-transition);
+}
+
+/* ✅ حالة القائمة المفتوحة */
+body.nav-mobile-open .mobile-menu,
+body.nav-mobile-open [data-mobile-menu],
+body.nav-mobile-open .nav-mobile,
+body.nav-mobile-open .mobile-nav,
+body.nav-mobile-open .hamburger-menu,
+body.nav-mobile-open .menu-mobile {
+  right: 0;
+  visibility: visible;
+  pointer-events: all;
+}
+
+[dir="rtl"] body.nav-mobile-open .mobile-menu,
+[dir="rtl"] body.nav-mobile-open [data-mobile-menu],
+body.nav-mobile-open .rtl.mobile-menu {
+  left: 0;
+  right: auto;
+}
+
+/* ─── 6. عناصر القائمة الداخلية ─────────────────────── */
+.mobile-menu a,
+[data-mobile-menu] a,
+.nav-mobile a,
+.mobile-nav a {
+  display: block;
+  padding: 14px 20px;
+  /* مساحة لمس كافية (لا تقل عن 44px) */
+  min-height: 48px;
+  line-height: 1.4;
+
+  /* ✅ إزالة التأخير على iOS */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  cursor: pointer;
+
+  /* منع تحديد النص عند الضغط */
+  -webkit-user-select: none;
+  user-select: none;
+
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.mobile-menu a:hover,
+.mobile-menu a:focus,
+[data-mobile-menu] a:hover,
+[data-mobile-menu] a:focus {
+  outline: 2px solid currentColor;
+  outline-offset: -2px;
+}
+
+/* ─── 7. زر الهامبرغر ───────────────────────────────── */
+[data-nav-toggle],
+.nav-toggle,
+.hamburger-btn,
+.menu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* مساحة لمس كافية */
+  min-width: 44px;
+  min-height: 44px;
+
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 8px;
+  border-radius: 6px;
+
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+
+  transition: opacity 0.2s ease;
+  z-index: calc(var(--nav-z-index) + 1);
+  position: relative;
+}
+
+[data-nav-toggle]:active,
+.nav-toggle:active {
+  opacity: 0.7;
+}
+
+/* تأثير أيقونة الهامبرغر → X */
+body.nav-mobile-open [data-nav-toggle] .hamburger-line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+body.nav-mobile-open [data-nav-toggle] .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+body.nav-mobile-open [data-nav-toggle] .hamburger-line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.hamburger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+  margin: 3px 0;
+}
+
+/* ─── 8. منع تداخل القائمة مع الأقسام ──────────────── */
+/* كل قسم يحصل على padding-top يساوي ارتفاع الهيدر */
+section[id],
+div[id] {
+  /* scroll-margin-top أفضل من padding-top للحفاظ على التصميم */
+  scroll-margin-top: calc(var(--header-height) + 8px);
+}
+
+/* ─── 9. منع overflow مخفي يكسر position:fixed ──────── */
+/* ⚠️ إذا كان أي والد يحتوي overflow:hidden → يكسر fixed */
+/* هذا الـ fix يستهدف الحالات الشائعة */
+.wrapper,
+.site-wrapper,
+#wrapper,
+.page-wrapper {
+  overflow-x: clip; /* clip بدلاً من hidden — يحافظ على fixed positioning */
+}
+
+/* ─── 10. iOS Safari: إصلاح "100vh" ────────────────── */
+@supports (height: 100dvh) {
+  .mobile-menu,
+  [data-mobile-menu],
+  .nav-mobile,
+  .mobile-nav {
+    height: calc(100dvh - var(--header-height));
+  }
+}
+
+/* ─── 11. تعطيل الـ Scroll على الـ Body عند فتح القائمة */
+body.nav-mobile-open {
+  overflow: hidden;
+  /* iOS Safari */
+  position: relative;
+  touch-action: none;
+}
+
+/* ─── 12. z-index hierarchy واضحة ───────────────────── */
+/* طبقات واضحة بدون تضارب:
+   body          = 0
+   sections      = 1
+   sticky elements = 10
+   overlay       = 999
+   mobile nav    = 1000
+   toggle btn    = 1001
+   lightbox      = 1100
+*/
+#lightbox,
+.lightbox {
+  z-index: 1100;
+}
+
+
+/* ═══════════════════════════════════════════════════
+   إصلاحات خاصة ببنية مشروع عبق الياسمين
+   (بناءً على فحص index.html)
+   ═══════════════════════════════════════════════════ */
+
+/* ─── القائمة المنسدلة الموجودة في المشروع ────────── */
+.nav-links,
+.nav-menu,
+#nav-menu {
+  /* ✅ إخفاء القائمة على الجوال وإظهارها عند الفتح */
+}
+
+@media (max-width: 768px) {
+
+  /* قائمة الجوال: إخفاء افتراضي */
+  .nav-links,
+  .nav-menu {
+    position: fixed !important;
+    top: var(--header-height);
+    inset-inline-end: -100%;
+    width: min(300px, 85vw);
+    height: calc(100vh - var(--header-height));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    z-index: var(--nav-z-index);
+    transition: inset-inline-end var(--nav-transition);
+    visibility: hidden;
+    pointer-events: none;
+    flex-direction: column;
+    display: flex !important;
+  }
+
+  /* ✅ القائمة المفتوحة */
+  body.nav-mobile-open .nav-links,
+  body.nav-mobile-open .nav-menu,
+  /* دعم الـ class القديم إذا كان موجوداً */
+  .nav-links.open,
+  .nav-links.active,
+  .nav-menu.open,
+  .nav-menu.active {
+    inset-inline-end: 0;
+    visibility: visible;
+    pointer-events: all;
+  }
+
+  /* عناصر القائمة */
+  .nav-links li,
+  .nav-menu li {
+    width: 100%;
+  }
+
+  .nav-links a,
+  .nav-menu a {
+    display: flex;
+    align-items: center;
+    padding: 16px 24px;
+    min-height: 52px;
+    width: 100%;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    font-size: 1.05rem;
+  }
+
+  /* ✅ تأثير الضغط المرئي */
+  .nav-links a:active,
+  .nav-menu a:active {
+    opacity: 0.7;
+    transform: scale(0.98);
+  }
+
+  /* إخفاء القائمة الأفقية على الجوال */
+  nav > ul,
+  .main-nav > ul {
+    display: none;
+  }
+
+  /* إظهار زر الهامبرغر */
+  [data-nav-toggle],
+  .nav-toggle,
+  .menu-toggle,
+  .hamburger {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 769px) {
+  /* إخفاء زر الهامبرغر على الشاشات الكبيرة */
+  [data-nav-toggle],
+  .nav-toggle,
+  .menu-toggle,
+  .hamburger {
+    display: none !important;
+  }
+
+  /* إعادة القائمة لوضعها الطبيعي */
+  .nav-links,
+  .nav-menu {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    visibility: visible !important;
+    pointer-events: all !important;
+    overflow: visible !important;
+    flex-direction: row !important;
+    transition: none !important;
+  }
+}
